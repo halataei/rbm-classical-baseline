@@ -2,7 +2,7 @@
 
 Code and results for the Matters Arising
 
-> S. M. H. Halataei, M. Ramezani, A. Bahrampour and A. Bahrampour,
+> S. M. H. Halataei, N. Samadi, M. Ramezani, A. Bahrampour and A. Bahrampour,
 > *A standard classical baseline and the cost of training challenge a reported quantum annealing speed-up*,
 > arising from L. Moro & E. Prati, *Commun. Phys.* **6**, 269 (2023), https://doi.org/10.1038/s42005-023-01390-y
 
@@ -12,9 +12,15 @@ Each script has its settings at the top and can be run with no arguments (writte
 ## Requirements
 Python 3.12 or later, `numpy`, `pandas`, `scikit-learn`, `matplotlib`; `torch` with CUDA for `rbm_gpu_vscode.py`; `pyarrow` (optional, faster CSV reading).
 
-## Data (not included)
-* **NSL-KDD**: `KDDTrain+.txt` and `KDDTest+.txt` from the Canadian Institute for Cybersecurity (https://www.unb.ca/cic/datasets/nsl.html), placed in `Dataset/`.
-* **CSE-CIC-IDS2018**: the ten CSV files of "Processed Traffic Data for ML Algorithms", downloaded into `CSE/` with `scripts/download_cse.py` (public AWS bucket `cse-cic-ids2018`).
+## Data
+* **NSL-KDD** (included): `Dataset/KDDTrain+.txt` (125,973 records) and `Dataset/KDDTest+.txt` (22,544 records), the official training and test files.
+  The Canadian Institute for Cybersecurity no longer offers NSL-KDD for download (https://www.unb.ca/cic/datasets/nsl.html).
+  We obtained the files from a public copy on Kaggle (https://www.kaggle.com/datasets/hassan06/nslkdd); their record and class counts match those reported for the original release (KDDTrain+: 67,343 normal, 58,630 attack; KDDTest+: 9,711 normal, 12,833 attack).
+  Their MD5 checksums are in `Dataset/MD5SUMS.txt`.
+  The NSL-KDD licence permits redistribution, provided the data set and the following paper are cited:
+  M. Tavallaee, E. Bagheri, W. Lu and A. A. Ghorbani, "A detailed analysis of the KDD CUP 99 data set", *2009 IEEE Symposium on Computational Intelligence for Security and Defense Applications*, 1–6 (IEEE, 2009).
+* **CSE-CIC-IDS2018** (not included): the ten CSV files of "Processed Traffic Data for ML Algorithms", downloaded into `CSE/` with `scripts/download_cse.py` (public AWS bucket `cse-cic-ids2018`).
+  Please cite: I. Sharafaldin, A. Habibi Lashkari and A. A. Ghorbani, "Toward generating a new intrusion detection dataset and intrusion traffic characterization", *Proc. ICISSP*, 108–116 (2018).
 
 ## Scripts and what they produce
 | Script | Produces |
@@ -35,4 +41,4 @@ Run `cse_benchmark_vscode.py` once before `rbm_gpu_vscode.py`: it builds the enc
 `gpu_cse_20261119_134857.json` (earlier 1,000-epoch CSE run, mentioned in Supplementary Note 5).
 
 ## Licence
-MIT.
+The code is released under the MIT licence (see `LICENSE`). The NSL-KDD files in `Dataset/` are redistributed under the terms of the NSL-KDD data set, which require the citation given above.
